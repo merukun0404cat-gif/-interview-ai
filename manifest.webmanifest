@@ -1,9 +1,8 @@
 {
   "name": "行政福祉 面接AI",
   "short_name": "面接AI",
-  "start_url": "./",
+  "start_url": "./?v=12",
   "display": "standalone",
-  "background_color": "#f5f9ff",
-  "theme_color": "#f7fbff",
-  "icons": []
+  "background_color": "#f7fbff",
+  "theme_color": "#c7f3df"
 }

@@ -1,0 +1,1 @@
+Ver.1.2: index.html / manifest.webmanifest / sw.js をGitHubリポジトリ直下へ上書きし、Commit changesを押してください。
