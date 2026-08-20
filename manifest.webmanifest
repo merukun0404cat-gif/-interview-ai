@@ -1,1 +1,9 @@
-{"name":"行政福祉 面接AI","short_name":"面接AI","start_url":"./index.html","display":"standalone","background_color":"#f6fbff","theme_color":"#eff8ff","icons":[]}
+{
+  "name": "行政福祉 面接AI",
+  "short_name": "面接AI",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f9ff",
+  "theme_color": "#f7fbff",
+  "icons": []
+}

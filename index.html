@@ -1,95 +1,299 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#eff8ff" />
-<link rel="manifest" href="manifest.webmanifest" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7fbff">
+<link rel="manifest" href="manifest.webmanifest">
 <title>行政福祉 面接AI</title>
 <style>
-:root{--blue:#2f93e8;--blue2:#5aacf1;--ink:#1c2430;--muted:#697386;--line:#e6ebf1;--bg:#f6fbff;--card:#fff;--pink:#ff668d;--green:#55bd9a;--yellow:#ffcc45}
-*{box-sizing:border-box} body{margin:0;background:linear-gradient(#eaf7ff,#fff7ef 42%,#fff);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink)}
-.app{max-width:430px;margin:auto;min-height:100vh;padding-bottom:88px}.top{padding:28px 18px 18px;background:linear-gradient(#e7f7ff,#f5fbff);border-bottom:1px solid #e4edf5}.brand{display:flex;gap:12px;align-items:center}.bot{width:58px;height:58px;border-radius:50%;background:#fff;border:1px solid #cfe0ef;display:grid;place-items:center;font-size:30px;box-shadow:0 4px 12px #bdd6e866}.title{font-size:22px;font-weight:800}.title b{color:#378fe3}.sub{font-size:13px;margin-top:4px}.content{padding:14px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 5px 16px #59779212;margin-bottom:14px}.selector{display:flex;justify-content:space-between;gap:10px;align-items:center}.label{font-size:12px;color:#5a9ce0;font-weight:700}.value{font-size:24px;font-weight:800}.job .label{color:#ef6b90}.deadline{margin-top:10px;color:#5d6673;font-size:14px}.deadline strong{font-size:25px;color:#3c9beb;margin:0 5px}.primary{width:100%;border:0;border-radius:18px;padding:19px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;font-size:21px;font-weight:800;box-shadow:0 7px 18px #2f93e83c}.primary small{display:block;font-size:12px;font-weight:500;margin-top:5px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{border:1px solid var(--line);border-radius:16px;padding:10px 4px;text-align:center;background:#fff}.stat .ico{font-size:22px}.stat .num{font-weight:800;font-size:21px;margin-top:4px}.stat .txt{font-size:11px}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.mini{padding:13px;border-radius:16px;font-size:12px}.good{background:#f0fbf6}.bad{background:#fff3f7}.mini h4{margin:0 0 8px}.mini div{margin:6px 0}.shortcuts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.shortcut{border:1px solid var(--line);border-radius:16px;padding:13px 5px;text-align:center;background:#fff;font-size:12px;cursor:pointer}.shortcut span{display:block;font-size:25px;margin-bottom:7px}.tip{display:flex;gap:10px;background:#eff8ff}.tip .face{font-size:40px}.tip a{color:#278be0;text-decoration:none;font-size:12px}.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(430px,100%);background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:10}.nav button{background:none;border:0;color:#7c8797;font-size:11px}.nav button.active{color:#2c92e7;font-weight:800}.nav i{display:block;font-style:normal;font-size:22px;margin-bottom:2px}
-.page{display:none}.page.active{display:block}.pagehead{display:flex;align-items:center;justify-content:space-between;padding:18px}.pagehead h2{margin:0;font-size:21px}.ghost{border:1px solid #b9d7f0;background:#fff;color:#318edc;border-radius:999px;padding:9px 13px}.step{display:flex;justify-content:space-between;color:#98a4b4;font-size:11px;padding:0 18px 14px}.step b{color:#2f93e8}.qtitle{font-size:23px;line-height:1.7;font-weight:800;margin:14px 0}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{font-size:12px;border:1px solid #c9e1f5;border-radius:8px;padding:6px 9px;color:#368ed8}.tag.pink{color:#e65d87;border-color:#ffc0d2}.point{background:#f0f8ff;border:1px solid #bfddf4;border-radius:13px;padding:13px;font-size:13px;line-height:1.8}.timerbox{text-align:center;border:2px solid #8bc4f1;border-radius:18px;padding:20px 12px;margin-top:14px}.timer{font-size:52px;font-variant-numeric:tabular-nums;margin:7px}.mic{width:112px;height:112px;border-radius:50%;border:10px solid #dceeff;background:linear-gradient(#71bbf4,#3694e8);color:#fff;font-size:46px;margin:12px auto;display:grid;place-items:center;box-shadow:0 0 0 6px #edf7ff}.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.setting{border:1px solid var(--line);border-radius:14px;padding:10px;font-size:12px}.setting b{display:block;font-size:15px;margin-top:5px}.textarea{width:100%;min-height:110px;border:1px solid #d9e2ec;border-radius:14px;padding:12px;font:inherit}.score{font-size:44px;font-weight:900;color:#2f93e8}.progress{height:8px;border-radius:9px;background:#edf1f5;overflow:hidden}.progress i{display:block;height:100%;background:#58a9ed;width:78%}.resultrow{display:flex;justify-content:space-between;margin:10px 0;font-size:13px}.sectiontitle{font-size:16px;font-weight:800;margin:8px 0}.chip{display:inline-block;padding:6px 9px;border-radius:999px;background:#eef7ff;color:#378edb;font-size:12px;margin:3px}.listitem{border:1px solid var(--line);border-radius:14px;padding:13px;margin:9px 0}.listitem strong{display:block}.listitem small{color:var(--muted)}.danger{color:#df5577}.modal{position:fixed;inset:0;background:#0005;display:none;align-items:flex-end;z-index:20}.modal.show{display:flex}.sheet{width:min(430px,100%);margin:auto;background:white;border-radius:24px 24px 0 0;padding:18px;max-height:78vh;overflow:auto}.sheet h3{margin-top:0}.field{margin:11px 0}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #d9e2ec;border-radius:12px;font:inherit}.btn{border:0;border-radius:13px;padding:12px 14px;font-weight:700}.btn.blue{background:#3294e7;color:#fff}.btn.light{background:#eef6fc;color:#2e8bd8}.btn.red{background:#fff0f4;color:#de577b}.flex{display:flex;gap:8px}.flex>*{flex:1}
+:root{
+  --bg:#f5f9ff; --card:#ffffff; --ink:#25324a; --muted:#74809a;
+  --line:#dbe5f3; --accent:#7ab8ff; --accent2:#a9d4ff; --good:#4fb88a;
+  --warn:#e9ae57; --danger:#dc6d7a; --shadow:0 10px 30px rgba(78,110,150,.12);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#f7fbff,#f4f7fb);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink)}
+.app{max-width:430px;margin:auto;min-height:100vh;padding-bottom:88px}
+header{padding:18px 18px 12px;position:sticky;top:0;background:rgba(247,251,255,.94);backdrop-filter:blur(12px);z-index:10;border-bottom:1px solid #eef3f9}
+h1{font-size:20px;margin:0 0 2px}.sub{font-size:12px;color:var(--muted)}
+main{padding:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}
+.pill{display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;background:#eef6ff;color:#3c6c9e;font-size:12px;font-weight:700}
+.btn{border:0;border-radius:14px;padding:12px 14px;font-weight:800;font-size:14px}
+.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 20px rgba(92,157,230,.25)}
+.soft{background:#eef6ff;color:#406b95}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.danger{background:#fff1f3;color:#a54b58}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{padding:12px;border-radius:16px;background:#f7faff}.stat b{font-size:20px;display:block}
+label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin:12px 0 5px}
+input,textarea,select{width:100%;border:1px solid var(--line);border-radius:13px;padding:11px;background:#fbfdff;font-size:15px;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(430px,100%);display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom));z-index:20}
+nav button{border:0;background:none;color:#7f8aa0;font-size:11px;font-weight:700;padding:5px}
+nav button.active{color:#3f7ebc}
+.navicon{display:block;font-size:20px;margin-bottom:2px}
+.page{display:none}.page.active{display:block}
+.bigcta{width:100%;padding:16px;border-radius:18px;font-size:16px}
+.section-title{font-size:16px;font-weight:900;margin:0 0 10px}
+.small{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;padding:5px 8px;border-radius:999px;background:#f0f4f8;font-size:11px;margin:2px}
+.question{font-size:19px;font-weight:900;line-height:1.55}
+.timer{font-size:34px;font-variant-numeric:tabular-nums;font-weight:900;text-align:center;margin:16px}
+.progress{height:8px;background:#e9eff7;border-radius:99px;overflow:hidden}.progress>i{display:block;height:100%;background:linear-gradient(90deg,#75b6ff,#9fd0ff)}
+.schedule-item{padding:12px;border-radius:16px;background:#f8fbff;margin-top:8px;border:1px solid #e6eef8}
+.status{font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px}.pending{background:#fff4dd;color:#9b681d}.pass{background:#e7f7ef;color:#2c8060}.wait{background:#edf3ff;color:#4e69a7}
+.notice{background:#fff9e8;border:1px solid #f3dfab;border-radius:15px;padding:12px;font-size:13px}
+.hr{height:1px;background:#edf1f6;margin:14px 0}
+.hidden{display:none}
 </style>
 </head>
-<body><div class="app">
-<div id="home" class="page active">
-  <div class="top"><div class="brand"><div class="bot">🤖</div><div><div class="title">行政福祉 面接<b>AI</b></div><div class="sub">あなた専用の面接コーチ</div></div></div></div>
-  <div class="content">
-    <div class="card selector" id="municipalityCard"><div><div class="label">応募先</div><div class="value" id="homeCity">尼崎市</div><div class="deadline">📅 面接まであと <strong id="daysLeft">17日</strong></div></div><div class="job"><div class="label">職種</div><div style="font-size:18px;font-weight:800" id="homeJob">精神保健福祉士</div></div><div style="font-size:30px;color:#9aa6b3">›</div></div>
-    <button class="primary" id="startPractice">🎤　模擬面接をはじめる<small>AI面接官と練習をスタート！</small></button>
-    <div class="card"><div class="sectiontitle">📊 今日の状況</div><div class="grid4"><div class="stat"><div class="ico">📝</div><div class="txt">練習回数</div><div class="num" id="practiceCount">0</div></div><div class="stat"><div class="ico">💬</div><div class="txt">回答した質問</div><div class="num" id="answeredCount">0</div></div><div class="stat"><div class="ico">⭐</div><div class="txt">平均スコア</div><div class="num" id="avgScore">--</div></div><div class="stat"><div class="ico">🎯</div><div class="txt">実問登録</div><div class="num" id="realCount">0</div></div></div>
-      <div class="two"><div class="mini good"><h4>💪 得意な分野</h4><div>① 利用者支援・関わり</div><div>② 多職種連携</div><div>③ 精神保健福祉の専門性</div></div><div class="mini bad"><h4>↗ もう少しの分野</h4><div>① 志望動機の深掘り</div><div>② 行政の役割・視点</div><div>③ 自治体の施策理解</div></div></div>
+<body>
+<div class="app">
+<header>
+  <h1>🫧 行政福祉 面接AI</h1>
+  <div class="sub">Ver.1.1 テスト版｜自治体ごとに育つ面接コーチ</div>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="card">
+    <div class="row between">
+      <div><div class="small">現在の応募先</div><div style="font-size:20px;font-weight:900" id="homeCity">尼崎市</div></div>
+      <button class="btn soft" onclick="openCitySwitcher()">切替 ▾</button>
     </div>
-    <div class="shortcuts"><div class="shortcut" data-go="questions"><span>📒</span>問題練習</div><div class="shortcut" id="openProfile"><span>👤</span>登録情報</div><div class="shortcut" data-go="answers"><span>⭐</span>模範回答</div><div class="shortcut" data-go="history"><span>📈</span>成長記録</div></div>
-    <div class="card tip"><div class="face">👩‍💼</div><div><b>今日のワンポイント</b><br><span id="tipText">自治体の施策と、自分の経験をつなげて話せると説得力が上がります。</span><br><a id="tipLink" href="https://www.city.amagasaki.hyogo.jp/" target="_blank">自治体公式サイトをチェック ↗</a></div></div>
+    <div class="row" style="margin-top:10px;flex-wrap:wrap">
+      <span class="pill" id="homeRole">精神保健福祉士</span>
+      <span class="pill" id="homeCountdown">面接日 未設定</span>
+    </div>
   </div>
+
+  <button class="btn primary bigcta" onclick="go('practice')">🎤 模擬面接をはじめる</button>
+
+  <div class="card" style="margin-top:12px">
+    <div class="row between"><div class="section-title">🧠 今日の5問</div><span class="pill" id="dailyCount">0 / 5</span></div>
+    <div class="progress"><i id="dailyBar" style="width:0%"></i></div>
+    <p class="small">AIが不足している経験を少しずつ聞いて、プロフィール候補に反映します。</p>
+    <button class="btn soft" style="width:100%" onclick="startDaily()">今日の質問に答える</button>
+  </div>
+
+  <div class="grid2">
+    <div class="stat"><span class="small">練習回数</span><b id="statPractice">0</b><span class="small">回</span></div>
+    <div class="stat"><span class="small">実問登録</span><b id="statReal">0</b><span class="small">問</span></div>
+  </div>
+
+  <div class="card">
+    <div class="row between"><div class="section-title">📅 直近の予定</div><button class="btn ghost" onclick="go('schedule')">見る</button></div>
+    <div id="homeSchedule"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">✨ AIからのおすすめ</div>
+    <div class="notice" id="careerTip">登録情報が増えると、向いていそうな行政福祉分野や、面接で使えそうな経験を提案します。</div>
+  </div>
+</section>
+
+<section id="practice" class="page">
+  <div class="card">
+    <div class="row between"><div class="section-title">🎤 模擬面接</div><span class="pill" id="practiceCity">尼崎市</span></div>
+    <label>モード</label>
+    <select id="mode"><option>基本</option><option>本番</option><option>圧迫・深掘り</option><option>実問中心</option></select>
+    <label>質問数</label>
+    <select id="questionCount"><option>5</option><option selected>10</option><option>15</option><option>20</option></select>
+    <button class="btn primary bigcta" style="margin-top:14px" onclick="beginPractice()">開始</button>
+  </div>
+  <div id="practicePanel" class="card hidden">
+    <div class="small" id="qNo">質問 1 / 10</div>
+    <div class="question" id="questionText"></div>
+    <div class="timer" id="timer">00:00</div>
+    <div class="grid2">
+      <button class="btn primary" id="timerBtn" onclick="toggleTimer()">▶ 回答開始</button>
+      <button class="btn ghost" onclick="finishAnswer()">回答終了</button>
+    </div>
+    <label>回答メモ（任意）</label><textarea id="answerText" placeholder="音声入力で入れてもOK"></textarea>
+    <button class="btn soft" style="width:100%;margin-top:10px" onclick="nextQuestion()">次の質問へ</button>
+  </div>
+</section>
+
+<section id="schedule" class="page">
+  <div class="card">
+    <div class="row between"><div class="section-title">📅 応募・面接スケジュール</div><button class="btn primary" onclick="editSchedule()">＋追加</button></div>
+    <div id="scheduleList"></div>
+  </div>
+  <div class="card">
+    <div class="section-title">🏁 選考結果まとめ</div>
+    <div id="resultList"></div>
+    <button class="btn soft" style="width:100%;margin-top:10px" onclick="editResult()">＋ 結果を登録</button>
+  </div>
+</section>
+
+<section id="profile" class="page">
+  <div class="card">
+    <div class="section-title">👤 共通プロフィール</div>
+    <p class="small">自治体を変えても共通で使う本人情報です。</p>
+    <label>氏名・呼び名</label><input id="pName">
+    <label>現在の仕事内容</label><textarea id="pWork"></textarea>
+    <label>保有資格・研修</label><textarea id="pQual"></textarea>
+    <label>得意な支援・経験</label><textarea id="pSkill"></textarea>
+    <label>長所</label><textarea id="pStrength"></textarea>
+    <label>短所</label><textarea id="pWeak"></textarea>
+    <label>困難事例・工夫した経験</label><textarea id="pHard"></textarea>
+    <label>多職種・地域連携経験</label><textarea id="pTeam"></textarea>
+    <label>緊急対応・業務改善経験</label><textarea id="pImprove"></textarea>
+    <label>仕事で大切にしていること</label><textarea id="pValue"></textarea>
+    <label>今後やりたいこと</label><textarea id="pFuture"></textarea>
+    <button class="btn primary" style="width:100%;margin-top:12px" onclick="saveProfile()">保存</button>
+  </div>
+
+  <div class="card">
+    <div class="row between"><div class="section-title">🏛 応募先ごとの提出情報</div><button class="btn soft" onclick="editCityInfo()">編集</button></div>
+    <div id="cityInfoView"></div>
+  </div>
+</section>
+
+<section id="library" class="page">
+  <div class="card">
+    <div class="section-title">📝 実際に聞かれた質問</div>
+    <div id="realQuestionList"></div>
+    <button class="btn primary" style="width:100%;margin-top:10px" onclick="addRealQuestion()">＋ 実問を登録</button>
+  </div>
+  <div class="card">
+    <div class="section-title">⭐ 模範回答ノート</div>
+    <p class="small">現時点では手動保存のテスト版です。AI接続後はプロフィールと練習履歴から更新候補を作ります。</p>
+    <div id="modelAnswers"></div>
+    <button class="btn soft" style="width:100%" onclick="addModelAnswer()">＋ 模範回答を追加</button>
+  </div>
+</section>
+</main>
+
+<nav>
+<button class="active" data-page="home" onclick="go('home',this)"><span class="navicon">🏠</span>ホーム</button>
+<button data-page="practice" onclick="go('practice',this)"><span class="navicon">🎤</span>練習</button>
+<button data-page="schedule" onclick="go('schedule',this)"><span class="navicon">📅</span>予定</button>
+<button data-page="profile" onclick="go('profile',this)"><span class="navicon">👤</span>登録</button>
+<button data-page="library" onclick="go('library',this)"><span class="navicon">📚</span>記録</button>
+</nav>
 </div>
 
-<div id="practice" class="page">
- <div class="pagehead"><button class="ghost" data-go="home">‹ 戻る</button><h2>模擬面接をはじめる</h2><button class="ghost" data-go="home">終了</button></div>
- <div class="step"><b>① 質問</b><span>② 回答</span><span>③ 評価</span><span>④ 深掘り</span><span>⑤ 次へ</span></div>
- <div class="content"><div class="card">
-   <div class="tags"><span class="tag" id="qIndex">質問 1 / 10</span><span class="tag" id="qCat">志望動機</span><span class="tag pink">重要度 ★★★</span></div>
-   <div class="qtitle" id="questionText">なぜ民間の福祉施設ではなく、行政の福祉職を志望したのですか？</div>
-   <div class="point">💡 <b>ポイント</b><br>・行政だからこそできることに触れましょう<br>・あなたの経験とつなげると説得力が増します</div>
-   <div class="timerbox"><div style="font-size:12px;color:#687386">◷ 経過時間</div><div class="timer" id="timer">00:00</div><div style="font-size:12px;color:#778290">目安：45秒〜1分15秒</div><div class="mic" id="micBtn">🎙️</div><div id="timerHelp">タップして回答を開始</div><button class="ghost" id="textAnswer" style="margin-top:14px">✎ 文字で回答する</button></div>
-   <textarea id="answerText" class="textarea" placeholder="音声入力が使えない場合はここに回答を入力" style="display:none;margin-top:14px"></textarea>
-   <div class="card" style="margin-top:14px;background:#f8fbff"><div class="sectiontitle">⚙ 面接の設定</div><div class="row3"><div class="setting">🔥 モード<b id="modeLabel">本番モード</b></div><div class="setting">☷ 質問数<b>10問</b></div><div class="setting">◷ 時間表示<b>表示する</b></div></div></div>
-   <button class="primary" id="finishAnswer">回答を終了して評価</button>
- </div></div>
-</div>
-
-<div id="result" class="page"><div class="pagehead"><button class="ghost" data-go="practice">‹ 戻る</button><h2>回答評価</h2><span></span></div><div class="content">
- <div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><div><div class="sectiontitle">今回のスコア</div><div class="score" id="score">82点</div></div><div style="text-align:right"><div>⏱ <b id="resultTime">1:08</b></div><small id="timeJudge">ちょうどいい長さ</small></div></div>
- <div class="resultrow"><span>質問への回答</span><b>88</b></div><div class="progress"><i style="width:88%"></i></div>
- <div class="resultrow"><span>具体性</span><b>82</b></div><div class="progress"><i style="width:82%"></i></div>
- <div class="resultrow"><span>行政の視点</span><b>74</b></div><div class="progress"><i style="width:74%"></i></div>
- </div>
- <div class="card"><div class="sectiontitle">👍 良かったところ</div><p>自分の現場経験を軸にして話そうとしている点が良いです。</p><div class="sectiontitle">🔧 ここを改善</div><p>「行政だからできる支援」を、関係機関をつなぐ役割や市民全体への支援と結び付けると、より説得力が出ます。</p></div>
- <div class="card"><div class="sectiontitle">⭐ 専用模範回答（テスト）</div><p id="modelAnswer">現職では障害者施設で利用者支援に携わる中で、一つの施設だけでは解決が難しい課題があると感じてきました。行政の立場から福祉・医療・地域の関係機関をつなぎ、より幅広い市民を継続的に支援したいと考えています。</p><button class="btn light" id="saveAnswer">⭐ この回答を保存</button></div>
- <div class="card tip"><div class="face">💡</div><div><b id="resultTipTitle">自治体ワンポイント</b><br><span id="resultTip">応募自治体の公式施策とつなげて話せると「なぜこの市か」が強くなります。</span></div></div>
- <button class="primary" id="nextQuestion">次の質問へ ›</button>
- </div></div>
-
-<div id="questions" class="page"><div class="pagehead"><button class="ghost" data-go="home">‹ 戻る</button><h2>問題練習</h2><button class="ghost" id="addRealQ">＋ 実問</button></div><div class="content"><div class="card"><div class="sectiontitle">実際に聞かれた質問</div><div id="realQuestions"></div></div><div class="card"><div class="sectiontitle">問題バンク（テスト版）</div><div id="bank"></div></div></div></div>
-<div id="answers" class="page"><div class="pagehead"><button class="ghost" data-go="home">‹ 戻る</button><h2>模範回答ノート</h2><span></span></div><div class="content"><div class="card" id="savedAnswers"><p>まだ保存された模範回答はありません。</p></div></div></div>
-<div id="history" class="page"><div class="pagehead"><button class="ghost" data-go="home">‹ 戻る</button><h2>成長記録</h2><span></span></div><div class="content"><div class="card"><div class="sectiontitle">これまでの練習</div><div id="historyList"></div></div></div></div>
-
-<div class="nav"><button class="active" data-go="home"><i>⌂</i>ホーム</button><button data-go="practice"><i>🎙</i>面接</button><button data-go="questions"><i>▤</i>問題</button><button data-go="answers"><i>☆</i>模範回答</button><button data-go="history"><i>♙</i>マイページ</button></div>
-</div>
-
-<div class="modal" id="cityModal"><div class="sheet"><h3>応募先を切り替える</h3><div id="cityList"></div><button class="btn light" id="addCity">＋ 自治体を追加</button><button class="btn" id="closeCity" style="float:right">閉じる</button></div></div>
-<div class="modal" id="profileModal"><div class="sheet"><h3>登録情報</h3><div class="field"><label>志望動機</label><textarea id="profileMotivation"></textarea></div><div class="field"><label>自己PR</label><textarea id="profilePr"></textarea></div><div class="field"><label>現在の仕事内容</label><textarea id="profileWork"></textarea></div><div class="field"><label>資格・研修</label><textarea id="profileQual"></textarea></div><div class="field"><label>面接で使いたいエピソード</label><textarea id="profileEp"></textarea></div><div class="flex"><button class="btn blue" id="saveProfile">保存</button><button class="btn light" id="closeProfile">閉じる</button></div></div></div>
-<div class="modal" id="realModal"><div class="sheet"><h3>実際に聞かれた質問を登録</h3><div class="field"><label>自治体</label><select id="realCity"></select></div><div class="field"><label>面接段階</label><select id="realStage"><option>一次面接</option><option>二次面接</option><option>最終面接</option><option>その他</option></select></div><div class="field"><label>質問</label><textarea id="realQText"></textarea></div><div class="field"><label>自分の回答・メモ（任意）</label><textarea id="realMemo"></textarea></div><div class="field"><label>手応え</label><select id="realFeel"><option>◎</option><option>○</option><option>△</option><option>×</option></select></div><div class="flex"><button class="btn blue" id="saveReal">登録</button><button class="btn light" id="closeReal">閉じる</button></div></div></div>
 <script>
-const defaults={cities:[{name:'尼崎市',job:'精神保健福祉士',date:'2026-09-06',url:'https://www.city.amagasaki.hyogo.jp/'},{name:'西宮市',job:'福祉職',date:'2026-09-20',url:'https://www.nishi.or.jp/'}],activeCity:0,profile:{motivation:'',pr:'',work:'',qual:'精神保健福祉士',ep:''},realQuestions:[],history:[],savedAnswers:[]};
-let data=JSON.parse(localStorage.getItem('wfInterviewAI')||'null')||defaults; const save=()=>localStorage.setItem('wfInterviewAI',JSON.stringify(data));
-const qs=[
-['志望動機','なぜ民間の福祉施設ではなく、行政の福祉職を志望したのですか？'],['自治体理解','なぜこの自治体を志望したのですか？'],['専門性','精神保健福祉士の資格を行政でどのように生かしたいですか？'],['利用者支援','意思表示が難しい利用者に対して、どのような工夫をしましたか？'],['多職種連携','関係機関と連携して課題を解決した経験を教えてください。'],['ケース','支援を拒否する市民から相談があった場合、どのように対応しますか？'],['公務員倫理','個人情報を扱う上で大切にしたいことは何ですか？'],['自己理解','あなたの長所と短所を、福祉職の仕事と関連付けて教えてください。'],['困難事例','対応が難しかったケースと、そこから学んだことを教えてください。'],['入庁後','入庁後、どのような福祉職員になりたいですか？']];
-let qn=0,startTs=null,timerInt=null,elapsed=0;
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.go===id));if(id==='home')renderHome();if(id==='questions')renderQuestions();if(id==='history')renderHistory();if(id==='answers')renderAnswers();scrollTo(0,0)}
-document.querySelectorAll('[data-go]').forEach(x=>x.onclick=()=>go(x.dataset.go));
-function activeCity(){return data.cities[data.activeCity]||data.cities[0]}
-function renderHome(){let c=activeCity();homeCity.textContent=c.name;homeJob.textContent=c.job;tipLink.href=c.url;tipLink.textContent=c.name+'公式サイトをチェック ↗';let d=Math.ceil((new Date(c.date)-new Date())/86400000);daysLeft.textContent=(d>0?d:0)+'日';practiceCount.textContent=data.history.length;answeredCount.textContent=data.history.length;realCount.textContent=data.realQuestions.length;avgScore.textContent=data.history.length?Math.round(data.history.reduce((a,b)=>a+b.score,0)/data.history.length):'--';}
-startPractice.onclick=()=>{qn=0;renderQuestion();go('practice')};
-function renderQuestion(){let q=qs[qn%qs.length];qIndex.textContent=`質問 ${qn+1} / 10`;qCat.textContent=q[0];questionText.textContent=q[1];resetTimer();answerText.value='';}
-function fmt(s){return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`}
-function resetTimer(){clearInterval(timerInt);timerInt=null;startTs=null;elapsed=0;timer.textContent='00:00';micBtn.textContent='🎙️';timerHelp.textContent='タップして回答を開始'}
-micBtn.onclick=()=>{if(!timerInt){startTs=Date.now()-elapsed*1000;timerInt=setInterval(()=>{elapsed=Math.floor((Date.now()-startTs)/1000);timer.textContent=fmt(elapsed)},250);micBtn.textContent='⏸';timerHelp.textContent='計測中… タップで一時停止'}else{clearInterval(timerInt);timerInt=null;micBtn.textContent='▶️';timerHelp.textContent='一時停止中'}};
-textAnswer.onclick=()=>{answerText.style.display=answerText.style.display==='none'?'block':'none';answerText.focus()};
-finishAnswer.onclick=()=>{clearInterval(timerInt);timerInt=null;let score=Math.max(65,Math.min(95,82 + Math.round((Math.random()-.5)*12)));document.getElementById('score').textContent=score+'点';resultTime.textContent=fmt(elapsed||48);timeJudge.textContent=elapsed<30?'少し短め':elapsed>95?'少し長め':'ちょうどいい長さ';let rec={date:new Date().toLocaleString('ja-JP'),city:activeCity().name,question:qs[qn%qs.length][1],score,time:elapsed||48,answer:answerText.value};data.history.push(rec);save();go('result')};
-nextQuestion.onclick=()=>{qn++; if(qn>=10){alert('10問のテスト練習が終了しました。');go('home')}else{renderQuestion();go('practice')}};
-saveAnswer.onclick=()=>{data.savedAnswers.unshift({city:activeCity().name,question:qs[qn%qs.length][1],answer:modelAnswer.textContent,date:new Date().toLocaleDateString('ja-JP')});save();alert('模範回答を保存しました')};
-municipalityCard.onclick=()=>{renderCityList();cityModal.classList.add('show')};closeCity.onclick=()=>cityModal.classList.remove('show');
-function renderCityList(){cityList.innerHTML='';data.cities.forEach((c,i)=>{let d=document.createElement('div');d.className='listitem';d.innerHTML=`<strong>${i===data.activeCity?'✓ ':''}${c.name}</strong><small>${c.job} ／ 面接日 ${c.date}</small>`;d.onclick=()=>{data.activeCity=i;save();cityModal.classList.remove('show');renderHome()};cityList.appendChild(d)});}
-addCity.onclick=()=>{let name=prompt('自治体名を入力してください');if(!name)return;let job=prompt('職種を入力してください','福祉職')||'福祉職';let date=prompt('面接日（YYYY-MM-DD）','2026-09-30')||'2026-09-30';let url=prompt('自治体公式サイトURL（任意）','')||'#';data.cities.push({name,job,date,url});data.activeCity=data.cities.length-1;save();renderCityList();renderHome()};
-openProfile.onclick=()=>{profileMotivation.value=data.profile.motivation||'';profilePr.value=data.profile.pr||'';profileWork.value=data.profile.work||'';profileQual.value=data.profile.qual||'';profileEp.value=data.profile.ep||'';profileModal.classList.add('show')};closeProfile.onclick=()=>profileModal.classList.remove('show');saveProfile.onclick=()=>{data.profile={motivation:profileMotivation.value,pr:profilePr.value,work:profileWork.value,qual:profileQual.value,ep:profileEp.value};save();profileModal.classList.remove('show');alert('登録情報を保存しました')};
-addRealQ.onclick=()=>{realCity.innerHTML=data.cities.map(c=>`<option>${c.name}</option>`).join('');realCity.value=activeCity().name;realModal.classList.add('show')};closeReal.onclick=()=>realModal.classList.remove('show');saveReal.onclick=()=>{if(!realQText.value.trim())return alert('質問を入力してください');data.realQuestions.unshift({city:realCity.value,stage:realStage.value,q:realQText.value,memo:realMemo.value,feel:realFeel.value,date:new Date().toLocaleDateString('ja-JP')});save();realQText.value='';realMemo.value='';realModal.classList.remove('show');renderQuestions();renderHome()};
-function renderQuestions(){realQuestions.innerHTML=data.realQuestions.length?'':'<p>まだ登録されていません。</p>';data.realQuestions.forEach(x=>{let e=document.createElement('div');e.className='listitem';e.innerHTML=`<strong>🏷 実問｜${x.q}</strong><small>${x.city}・${x.stage}・手応え ${x.feel}・${x.date}</small>${x.memo?`<div style="margin-top:6px;font-size:12px">${x.memo}</div>`:''}`;realQuestions.appendChild(e)});bank.innerHTML=qs.map((q,i)=>`<div class="listitem"><strong>${i+1}. ${q[1]}</strong><small>${q[0]}</small></div>`).join('')}
-function renderHistory(){historyList.innerHTML=data.history.length?'':'<p>まだ練習履歴はありません。</p>';[...data.history].reverse().forEach(x=>{historyList.innerHTML+=`<div class="listitem"><strong>${x.score}点｜${x.question}</strong><small>${x.city}・${x.date}・回答時間 ${fmt(x.time)}</small></div>`})}
-function renderAnswers(){savedAnswers.innerHTML=data.savedAnswers.length?'':'<p>まだ保存された模範回答はありません。</p>';data.savedAnswers.forEach((x,i)=>{savedAnswers.innerHTML+=`<div class="listitem"><strong>${x.city}｜${x.question}</strong><small>Ver.${data.savedAnswers.length-i}・${x.date}</small><div style="margin-top:8px;line-height:1.7">${x.answer}</div></div>`})}
-renderHome();if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+const DEFAULT={
+ cities:[
+  {id:'ama',name:'尼崎市',role:'精神保健福祉士',motivation:'',selfpr:'',essay:'',status:'応募中'},
+  {id:'nishi',name:'西宮市',role:'福祉職',motivation:'',selfpr:'',essay:'',status:'検討中'}
+ ],
+ currentCity:'ama',
+ profile:{name:'ひろき',work:'障害者施設で利用者支援',qual:'精神保健福祉士／強度行動障害支援者養成研修',skill:'意思表示が難しい利用者への支援',strength:'',weak:'',hard:'',team:'社会福祉協議会と連携したボッチャ大会の企画・運営',improve:'施設改修前の業務シミュレーション、緊急時の優先順位付け',value:'',future:''},
+ schedules:[],
+ results:[],
+ realQuestions:[],
+ modelAnswers:[],
+ practiceCount:0,
+ dailyIndex:0,
+ dailyAnswers:{}
+};
+let data=JSON.parse(localStorage.getItem('interviewAIv11')||'null')||DEFAULT;
+function save(){localStorage.setItem('interviewAIv11',JSON.stringify(data));renderAll()}
+function city(){return data.cities.find(c=>c.id===data.currentCity)||data.cities[0]}
+function go(id,btn){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===id));
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function openCitySwitcher(){
+ const names=data.cities.map((c,i)=>`${i+1}. ${c.name}（${c.role}）`).join('\n');
+ const ans=prompt(`切り替える番号を入力\n${names}\n\n新規追加は「追加」`);
+ if(ans==='追加'){const n=prompt('自治体名'); if(!n)return; const r=prompt('職種','福祉職')||'福祉職'; const id='c'+Date.now(); data.cities.push({id,name:n,role:r,motivation:'',selfpr:'',essay:'',status:'検討中'}); data.currentCity=id; save();return}
+ const i=parseInt(ans)-1;if(data.cities[i]){data.currentCity=data.cities[i].id;save()}
+}
+const dailyQs=[
+ '利用者さんのご家族と意見調整をした経験はありますか？',
+ '医療機関や行政と連携した経験はありますか？',
+ '後輩や新任職員に仕事を教えた経験はありますか？',
+ '利用者本人の意思と周囲の希望が違った場面に対応した経験はありますか？',
+ '急なトラブルで優先順位を決めて動いた経験はありますか？',
+ '地域の人や他施設と一緒に企画をした経験はありますか？',
+ '自分の提案で業務を改善した経験はありますか？',
+ 'うまくいかなかった支援を振り返って方法を変えた経験はありますか？',
+ '苦情や強い要望を受けて対応した経験はありますか？',
+ '本人が言葉で気持ちを表しにくい場面で工夫した経験はありますか？'
+];
+function startDaily(){
+ const i=(data.dailyIndex||0)%dailyQs.length;
+ const q=dailyQs[i]; const a=prompt(`今日の質問 ${Math.min((data.dailyIndex%5)+1,5)}/5\n\n${q}\n\n「はい」「いいえ」「スキップ」`);
+ if(!a)return;
+ if(a==='はい'){
+   const detail=prompt('簡単に内容を教えてください（あとで編集できます）','');
+   data.dailyAnswers[q]={answer:'yes',detail:detail||''};
+ }else if(a==='いいえ'){data.dailyAnswers[q]={answer:'no',detail:''}}
+ else {data.dailyAnswers[q]={answer:'skip',detail:''}}
+ data.dailyIndex=(data.dailyIndex||0)+1;
+ save();
+}
+let qIndex=0,qTotal=10,seconds=0,timerId=null;
+const questions=[
+ '行政の福祉職を志望した理由を教えてください。',
+ '現在の仕事で最も大切にしていることは何ですか。',
+ '精神保健福祉士の専門性を行政でどのように生かしたいですか。',
+ '支援が難しかった利用者への対応について教えてください。',
+ '多職種・他機関と連携した経験を教えてください。',
+ 'あなたの長所を行政職でどう生かしますか。',
+ 'あなたの短所と、その改善のためにしていることを教えてください。',
+ '民間の支援施設と行政の役割の違いをどう考えますか。',
+ '地域福祉を進めるうえで大切だと思うことは何ですか。',
+ '入庁後に取り組みたいことを教えてください。',
+ '本人が支援を拒否している場合、どのように関わりますか。',
+ '家族と本人の意向が対立している場合、どのように調整しますか。'
+];
+function beginPractice(){qTotal=parseInt(document.getElementById('questionCount').value);qIndex=0;seconds=0;document.getElementById('practicePanel').classList.remove('hidden');showQ()}
+function showQ(){document.getElementById('qNo').textContent=`質問 ${qIndex+1} / ${qTotal}`;document.getElementById('questionText').textContent=questions[qIndex%questions.length];resetTimer();document.getElementById('answerText').value=''}
+function resetTimer(){clearInterval(timerId);timerId=null;seconds=0;drawTimer();document.getElementById('timerBtn').textContent='▶ 回答開始'}
+function drawTimer(){const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');document.getElementById('timer').textContent=`${m}:${s}`}
+function toggleTimer(){if(timerId){clearInterval(timerId);timerId=null;document.getElementById('timerBtn').textContent='▶ 再開'}else{timerId=setInterval(()=>{seconds++;drawTimer()},1000);document.getElementById('timerBtn').textContent='⏸ 一時停止'}}
+function finishAnswer(){if(timerId){clearInterval(timerId);timerId=null}alert(`回答時間：${document.getElementById('timer').textContent}\nテスト版では採点AIは未接続です。`)}
+function nextQuestion(){if(qIndex+1>=qTotal){data.practiceCount++;save();alert('模擬面接終了！練習履歴に1回追加しました。');go('home');return}qIndex++;showQ()}
+function editSchedule(editId){
+ let s=editId?data.schedules.find(x=>x.id===editId):null;
+ const cityName=prompt('自治体名',s?.city||city().name); if(!cityName)return;
+ const stage=prompt('選考段階','一次面接'); const date=prompt('日付（YYYY-MM-DD）',s?.date||''); const time=prompt('開始時間',s?.time||'');
+ const place=prompt('会場／オンライン',s?.place||''); const memo=prompt('持ち物・メモ',s?.memo||'');
+ if(s)Object.assign(s,{city:cityName,stage,date,time,place,memo});else data.schedules.push({id:'s'+Date.now(),city:cityName,stage,date,time,place,memo});
+ save()
+}
+function editResult(){
+ const c=prompt('自治体名',city().name); if(!c)return; const stage=prompt('選考段階','一次面接'); const result=prompt('結果（通過／不合格／結果待ち等）','結果待ち'); const memo=prompt('手応え・反省・次回へのメモ','');
+ data.results.push({id:'r'+Date.now(),city:c,stage,result,memo});save()
+}
+function addRealQuestion(){
+ const c=prompt('自治体名',city().name);if(!c)return;const stage=prompt('選考段階','一次面接');const q=prompt('実際に聞かれた質問');if(!q)return;const memo=prompt('自分の回答・手応え・メモ','');
+ data.realQuestions.push({id:'q'+Date.now(),city:c,stage,q,memo});save()
+}
+function addModelAnswer(){const title=prompt('質問／テーマ','志望動機');if(!title)return;const text=prompt('模範回答');if(!text)return;data.modelAnswers.push({id:'m'+Date.now(),city:city().name,title,text,ver:1});save()}
+function editCityInfo(){
+ let c=city(); c.role=prompt('職種',c.role)||c.role;c.motivation=prompt('提出した志望動機',c.motivation||'')||'';c.selfpr=prompt('提出した自己PR',c.selfpr||'')||'';c.essay=prompt('その他提出内容',c.essay||'')||'';save()
+}
+function saveProfile(){
+ const map={name:'pName',work:'pWork',qual:'pQual',skill:'pSkill',strength:'pStrength',weak:'pWeak',hard:'pHard',team:'pTeam',improve:'pImprove',value:'pValue',future:'pFuture'};
+ Object.entries(map).forEach(([k,id])=>data.profile[k]=document.getElementById(id).value);save();alert('保存しました')
+}
+function renderAll(){
+ const c=city();document.getElementById('homeCity').textContent=c.name;document.getElementById('homeRole').textContent=c.role;document.getElementById('practiceCity').textContent=c.name;
+ const next=data.schedules.filter(s=>s.city===c.name&&s.date).sort((a,b)=>a.date.localeCompare(b.date))[0];
+ document.getElementById('homeCountdown').textContent=next?`${next.date} ${next.stage}`:'面接日 未設定';
+ document.getElementById('statPractice').textContent=data.practiceCount||0;document.getElementById('statReal').textContent=data.realQuestions.length;
+ const d=Math.min((data.dailyIndex||0)%5,5);document.getElementById('dailyCount').textContent=`${d} / 5`;document.getElementById('dailyBar').style.width=`${d*20}%`;
+ const hs=document.getElementById('homeSchedule');hs.innerHTML=next?`<div class="schedule-item"><b>${next.city}｜${next.stage}</b><div class="small">${next.date} ${next.time||''} ${next.place||''}</div></div>`:'<div class="small">予定はまだありません。</div>';
+ document.getElementById('careerTip').textContent=data.profile.team?`「${data.profile.team.slice(0,34)}…」は、地域連携・企画力・協働性を示すエピソードとして使えそうです。`:'登録情報が増えると、おすすめを出します。';
+ const sl=document.getElementById('scheduleList');sl.innerHTML=data.schedules.length?data.schedules.map(s=>`<div class="schedule-item"><div class="row between"><b>${s.city}｜${s.stage}</b><button class="btn ghost" onclick="editSchedule('${s.id}')">編集</button></div><div>${s.date||'日付未設定'} ${s.time||''}</div><div class="small">${s.place||''} ${s.memo||''}</div></div>`).join(''):'<div class="small">＋追加から面接日程を登録できます。</div>';
+ const rl=document.getElementById('resultList');rl.innerHTML=data.results.length?data.results.map(r=>`<div class="schedule-item"><div class="row between"><b>${r.city}｜${r.stage}</b><span class="status ${r.result.includes('通過')?'pass':'wait'}">${r.result}</span></div><div class="small">${r.memo||''}</div></div>`).join(''):'<div class="small">まだ結果登録はありません。</div>';
+ const p=data.profile;['Name','Work','Qual','Skill','Strength','Weak','Hard','Team','Improve','Value','Future'].forEach(k=>document.getElementById('p'+k).value=p[k.toLowerCase()]||'');
+ document.getElementById('cityInfoView').innerHTML=`<b>${c.name}｜${c.role}</b><div class="hr"></div><div class="small">志望動機</div><div>${c.motivation||'未入力'}</div><div class="small" style="margin-top:10px">自己PR</div><div>${c.selfpr||'未入力'}</div><div class="small" style="margin-top:10px">その他</div><div>${c.essay||'未入力'}</div>`;
+ const ql=document.getElementById('realQuestionList');ql.innerHTML=data.realQuestions.length?data.realQuestions.map(q=>`<div class="schedule-item"><b>${q.city}｜${q.stage}</b><div>${q.q}</div><div class="small">${q.memo||''}</div></div>`).join(''):'<div class="small">面接後に実問を残せます。</div>';
+ const ml=document.getElementById('modelAnswers');ml.innerHTML=data.modelAnswers.length?data.modelAnswers.map(m=>`<div class="schedule-item"><div class="row between"><b>${m.title}</b><span class="pill">Ver.${m.ver}</span></div><div>${m.text}</div></div>`).join(''):'<div class="small">まだ模範回答はありません。</div>';
+}
+renderAll();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
 </script>
-</body></html>
+</body>
+</html>
