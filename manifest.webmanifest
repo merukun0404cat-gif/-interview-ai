@@ -1,8 +1,9 @@
 {
-  "name": "行政福祉 面接AI",
+  "name": "行政福祉 面接AI Ver.1.3",
   "short_name": "面接AI",
-  "start_url": "./?v=12",
+  "start_url": "./?v=13",
   "display": "standalone",
-  "background_color": "#f7fbff",
-  "theme_color": "#c7f3df"
+  "background_color": "#fff9fc",
+  "theme_color": "#ffd9e8",
+  "description": "メルと育てる自治体福祉職向け面接練習アプリ"
 }

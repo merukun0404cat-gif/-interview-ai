@@ -1,1 +1,1 @@
-Ver.1.2: index.html / manifest.webmanifest / sw.js をGitHubリポジトリ直下へ上書きし、Commit changesを押してください。
+iPhoneから更新する場合はこちら。index.html / manifest.webmanifest / sw.js の3ファイルだけをGitHubへ上書きし、Commit changesを押してください。Ver.1.2のinterviewAI12を自動移行します。
